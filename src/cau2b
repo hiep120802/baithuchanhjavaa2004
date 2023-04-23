@@ -1,0 +1,51 @@
+public class ContactImpl implements Contact {
+    private String name;
+    private String phoneNumber;
+
+    public ContactImpl(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Contacts contacts = new Contacts();
+
+        Contact contact1 = new ContactImpl("John Doe", "1234567890");
+        Contact contact2 = new ContactImpl("Jane Doe", "0987654321");
+
+        contacts.addContact(contact1);
+        contacts.addContact(contact2);
+
+        System.out.println("Phone number for John Doe: " + contacts.getPhoneNumber("John Doe"));
+
+        contacts.updateContact("John Doe", "1111111111");
+
+        System.out.println("Phone number for John Doe after update: " + contacts.getPhoneNumber("John Doe"));
+
+        contacts.removeContact("Jane Doe");
+
+        System.out.println("Phone number for Jane Doe after remove: " + contacts.getPhoneNumber("Jane Doe"));
+    }
+}

@@ -1,0 +1,45 @@
+public interface Contact {
+    public String getName();
+    public void setName(String name);
+    public String getPhoneNumber();
+    public void setPhoneNumber(String phoneNumber);
+}public class Contacts {
+    private List<Contact> contactList;
+
+    public Contacts() {
+        this.contactList = new ArrayList<>();
+    }
+
+    public void addContact(Contact contact) {
+        if (!contactList.contains(contact)) {
+            contactList.add(contact);
+        }
+    }
+
+    public void updateContact(String name, String phoneNumber) {
+        for (Contact contact : contactList) {
+            if (contact.getName().equals(name)) {
+                contact.setPhoneNumber(phoneNumber);
+                break;
+            }
+        }
+    }
+
+    public void removeContact(String name) {
+        for (Contact contact : contactList) {
+            if (contact.getName().equals(name)) {
+                contactList.remove(contact);
+                break;
+            }
+        }
+    }
+
+    public String getPhoneNumber(String name) {
+        for (Contact contact : contactList) {
+            if (contact.getName().equals(name)) {
+                return contact.getPhoneNumber();
+            }
+        }
+        return null;
+    }
+}
